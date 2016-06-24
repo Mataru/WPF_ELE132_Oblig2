@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using WPF_ELE132_Oblig2.Model;
 
 namespace WPF_ELE132_Oblig2.ViewModel
 {
 	public class ViewModelLogin : ViewModelBase
 	{
-		private string username, 
-					   password;
+		private string _username, 
+					   _password;
 
 		public event EventHandler<LoginEventArgs> LoadNewView;
 		public event EventHandler<ErrorEventArgs> InvalidLogin;
@@ -32,20 +27,20 @@ namespace WPF_ELE132_Oblig2.ViewModel
 
 		public string Username
 		{
-			get { return username; }
+			get { return _username; }
 			set
 			{
-				username = value;
+				_username = value;
 				AttemptLogin.OnCanExecuteChanged();
 			}
 		}
 
 		public string Password
 		{
-			get { return password; }
+			get { return _password; }
 			set 
 			{ 
-				password = value;
+				_password = value;
 				AttemptLogin.OnCanExecuteChanged();
 			}
 		}

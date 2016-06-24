@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPF_ELE132_Oblig2.Model;
 
 namespace WPF_ELE132_Oblig2.ViewModel
