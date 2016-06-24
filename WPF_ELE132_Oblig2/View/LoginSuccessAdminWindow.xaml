@@ -1,0 +1,97 @@
+﻿<Window x:Class="WPF_ELE132_Oblig2.View.LoginSuccessAdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoginSuccessAdminWindow"
+        Height="450"
+        Width="750"
+        Background="#FF302E2E"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="375" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="listView"
+                  Grid.ColumnSpan="1"
+                  Grid.RowSpan="1"
+                  Margin="5,5,5,5"
+                  ItemsSource="{Binding ObservableUsers}"
+                  SelectedItem="{Binding SelectedUser, Mode=OneWayToSource}"
+                  Background="#FF635A5A">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="150"
+                                    Header="Username"
+                                    DisplayMemberBinding="{Binding Username}" />
+                    <GridViewColumn Width="150"
+                                    Header="Password expiration date"
+                                    DisplayMemberBinding="{Binding PasswordExpirationDate}" />
+                    <GridViewColumn Width="55"
+                                    Header="Admin"
+                                    DisplayMemberBinding="{Binding IsAdmin}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Username:"
+               Grid.Column="1"
+               HorizontalAlignment="Left"
+               Margin="10,10,0,0"
+               VerticalAlignment="Top" />
+        <TextBox Grid.Column="1"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="87,10,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120"
+                 Text="{Binding UsernameEntry, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Content="Password:"
+               Grid.Column="1"
+               HorizontalAlignment="Left"
+               Margin="10,43,0,0"
+               VerticalAlignment="Top" />
+        <PasswordBox Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Margin="87,41,0,0"
+                     VerticalAlignment="Top"
+                     Width="120"
+                     PasswordChanged="PasswordBox_PasswordChanged"/>
+        <TextBox Name="textBoxRelay" 
+                 Visibility="Collapsed"
+                 Text="{Binding PasswordEntry, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="Delete"
+                HorizontalAlignment="Left"
+                Margin="5,10,0,0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Width="75"
+                Command="{Binding DeleteUser}"
+                ToolTip="Deletes the selected user from the list." />
+        <Button Content="Reset Password"
+                HorizontalAlignment="Left"
+                Margin="85,10,0,0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Width="Auto"
+                Command="{Binding ResetPassword}"
+                ToolTip="Sets the selected users password back to default." />
+        <Button Content="Create"
+                HorizontalAlignment="Left"
+                Margin="10,76,0,0"
+                VerticalAlignment="Top"
+                Width="Auto"
+                Command="{Binding CreateNewUser}"
+                ToolTip="Create new user."
+                Grid.Column="1" />
+        <CheckBox Content="Admin"
+                  Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  Margin="108,76,0,0"
+                  VerticalAlignment="Top"
+                  IsChecked="{Binding AdminCheck, Mode=OneWayToSource}"/>
+    </Grid>
+</Window>
